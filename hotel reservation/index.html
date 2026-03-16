@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Serene Grand — Luxury Hotel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --dark: #0e0d0b;
+    --dark2: #1a1814;
+    --dark3: #252219;
+    --cream: #f5f0e8;
+    --cream2: #ede6d6;
+    --text: #c8bfa8;
+    --white: #fff9f0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 60px;
+    background: linear-gradient(to bottom, rgba(14,13,11,.95) 0%, transparent 100%);
+    backdrop-filter: blur(4px);
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; letter-spacing: .12em; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { color: var(--cream2); font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; transition: color .3s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 9px 22px; font-family: 'Jost', sans-serif; font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; cursor: pointer; transition: all .3s; }
+  .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+  .hero { position: relative; height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 60px 80px; overflow: hidden; }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(14,13,11,1) 0%, rgba(14,13,11,.3) 50%, transparent 100%), url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1800&q=90') center/cover no-repeat;
+    animation: kenBurns 18s ease-in-out infinite alternate;
+  }
+  @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
+  .hero-tag { position: relative; font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+  .hero-tag::before { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--gold); vertical-align: middle; margin-right: 14px; }
+  .hero-title { position: relative; font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: 1; color: var(--white); margin-bottom: 28px; }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-sub { position: relative; max-width: 520px; font-size: .9rem; line-height: 1.8; color: var(--cream2); margin-bottom: 40px; }
+  .hero-actions { position: relative; display: flex; gap: 18px; align-items: center; }
+  .btn-primary { background: var(--gold); color: var(--dark); border: none; padding: 15px 38px; font-family: 'Jost', sans-serif; font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; transition: all .3s; }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost { background: transparent; border: 1px solid rgba(201,169,110,.5); color: var(--gold); padding: 14px 32px; font-family: 'Jost', sans-serif; font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; transition: all .3s; text-decoration: none; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--gold); background: rgba(201,169,110,.08); }
+  .scroll-hint { position: absolute; bottom: 36px; right: 60px; display: flex; align-items: center; gap: 10px; font-size: .68rem; letter-spacing: .2em; color: var(--text); text-transform: uppercase; animation: bob 2s ease-in-out infinite; }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+  .stats-bar { background: var(--dark3); border-top: 1px solid rgba(201,169,110,.15); border-bottom: 1px solid rgba(201,169,110,.15); display: flex; justify-content: space-around; padding: 32px 60px; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: var(--gold); }
+  .stat-label { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text); margin-top: 4px; }
+
+  section { padding: 100px 60px; }
+  .section-eyebrow { font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 14px; }
+  .section-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 300; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-desc { font-size: .92rem; line-height: 1.9; color: var(--text); max-width: 540px; }
+  .divider { width: 60px; height: 1px; background: linear-gradient(to right, var(--gold), transparent); margin: 30px 0; }
+
+  .about { background: var(--dark2); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+  .about-img-wrap { position: relative; }
+  .about-img-main { width: 100%; height: 520px; object-fit: cover; filter: saturate(.9); }
+  .about-img-accent { position: absolute; bottom: -30px; right: -30px; width: 200px; height: 240px; object-fit: cover; border: 6px solid var(--dark2); }
+  .about-badge { position: absolute; top: 30px; left: -20px; background: var(--gold); color: var(--dark); padding: 18px 22px; text-align: center; }
+  .about-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; display: block; }
+  .about-badge-text { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; }
+  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 36px; }
+  .about-feat { display: flex; align-items: flex-start; gap: 12px; }
+  .feat-icon { width: 34px; height: 34px; min-width: 34px; border: 1px solid rgba(201,169,110,.4); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--gold); }
+  .feat-name { font-size: .8rem; letter-spacing: .06em; color: var(--cream2); }
+  .feat-desc { font-size: .75rem; color: var(--text); margin-top: 3px; }
+
+  .rooms { background: var(--dark); }
+  .rooms-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
+  .rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .room-card { position: relative; overflow: hidden; cursor: pointer; }
+  .room-card:first-child { grid-column: span 2; }
+  .room-img { width: 100%; height: 380px; object-fit: cover; transition: transform .7s ease; display: block; }
+  .room-card:first-child .room-img { height: 480px; }
+  .room-card:hover .room-img { transform: scale(1.04); }
+  .room-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,13,11,.95) 0%, rgba(14,13,11,.1) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; }
+  .room-type { font-size: .65rem; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+  .room-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--white); }
+  .room-price { font-size: .8rem; color: var(--text); margin-top: 6px; }
+  .room-price strong { color: var(--gold); font-size: 1.2rem; font-weight: 300; }
+  .room-tags { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .room-tag { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cream2); border: 1px solid rgba(255,249,240,.2); padding: 3px 10px; }
+
+  .gallery { background: var(--dark3); padding: 80px 0; }
+  .gallery-header { padding: 0 60px; margin-bottom: 40px; }
+  .gallery-strip { display: flex; gap: 4px; overflow-x: auto; padding: 0 60px; scrollbar-width: none; }
+  .gallery-strip::-webkit-scrollbar { display: none; }
+  .gallery-item { min-width: 320px; height: 240px; overflow: hidden; flex-shrink: 0; position: relative; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; display: block; }
+  .gallery-item:hover img { transform: scale(1.06); }
+
+  .location { background: var(--dark2); }
+  .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; margin-top: 60px; align-items: start; }
+  .map-box { position: relative; height: 420px; border: 1px solid rgba(201,169,110,.2); overflow: hidden; }
+  .map-box iframe { width: 100%; height: 100%; border: none; filter: grayscale(1) contrast(.8) sepia(.4); }
+  .map-label { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(14,13,11,.85); backdrop-filter: blur(8px); padding: 14px 20px; display: flex; align-items: center; gap: 10px; }
+  .map-pin { color: var(--gold); font-size: 1.2rem; }
+  .map-addr { font-size: .78rem; color: var(--cream2); }
+  .nearby-list { list-style: none; }
+  .nearby-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid rgba(201,169,110,.1); }
+  .nearby-item:last-child { border-bottom: none; }
+  .nearby-name { font-size: .85rem; color: var(--cream2); }
+  .nearby-cat { font-size: .65rem; letter-spacing: .12em; color: var(--gold); text-transform: uppercase; }
+  .nearby-dist { font-size: .78rem; color: var(--text); }
+  .location-desc { font-size: .9rem; line-height: 1.9; color: var(--text); margin-bottom: 30px; }
+
+  .ratings { background: var(--dark); }
+  .ratings-top { display: flex; gap: 60px; align-items: center; padding-bottom: 60px; border-bottom: 1px solid rgba(201,169,110,.15); margin-bottom: 60px; }
+  .big-score { text-align: center; min-width: 160px; }
+  .big-score-num { font-family: 'Cormorant Garamond', serif; font-size: 5.5rem; font-weight: 300; color: var(--gold); line-height: 1; }
+  .big-score-label { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text); }
+  .stars { color: var(--gold); font-size: 1.4rem; margin: 8px 0; }
+  .rating-bars { flex: 1; }
+  .rbar-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .rbar-label { font-size: .75rem; color: var(--cream2); min-width: 100px; }
+  .rbar-track { flex: 1; height: 3px; background: rgba(201,169,110,.15); border-radius: 2px; overflow: hidden; }
+  .rbar-fill { height: 100%; background: linear-gradient(to right, var(--gold), var(--gold-light)); border-radius: 2px; }
+  .rbar-val { font-size: .75rem; color: var(--gold); min-width: 24px; text-align: right; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .review-card { background: var(--dark2); border: 1px solid rgba(201,169,110,.1); padding: 28px; position: relative; }
+  .review-card::before { content: '"'; font-family: 'Cormorant Garamond', serif; font-size: 4rem; color: rgba(201,169,110,.15); position: absolute; top: 10px; left: 20px; line-height: 1; }
+  .review-text { font-size: .83rem; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
+  .review-footer { display: flex; align-items: center; gap: 12px; }
+  .reviewer-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--dark3); overflow: hidden; border: 1px solid rgba(201,169,110,.3); display: flex; align-items: center; justify-content: center; font-size: .8rem; color: var(--gold); font-weight: 500; }
+  .reviewer-name { font-size: .8rem; color: var(--cream2); }
+  .reviewer-date { font-size: .68rem; color: var(--text); margin-top: 2px; }
+  .review-stars { color: var(--gold); font-size: .75rem; margin-left: auto; }
+
+  .contact { background: var(--dark3); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px; }
+  .contact-info-block { display: flex; flex-direction: column; gap: 32px; }
+  .contact-item { display: flex; gap: 18px; align-items: flex-start; }
+  .contact-icon { width: 46px; height: 46px; min-width: 46px; border: 1px solid rgba(201,169,110,.3); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--gold); }
+  .contact-item-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+  .contact-item-val { font-size: .9rem; color: var(--cream2); line-height: 1.7; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 7px; }
+  .form-label { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text); }
+  .form-input, .form-select, .form-textarea { background: rgba(255,249,240,.04); border: 1px solid rgba(201,169,110,.2); color: var(--cream2); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: .85rem; outline: none; transition: border-color .3s; width: 100%; }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
+  .form-select { cursor: pointer; }
+  .form-select option { background: var(--dark2); }
+  .form-textarea { resize: vertical; min-height: 110px; }
+  .submit-btn { background: var(--gold); border: none; color: var(--dark); padding: 15px 36px; font-family: 'Jost', sans-serif; font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; transition: all .3s; width: fit-content; margin-top: 6px; }
+  .submit-btn:hover { background: var(--gold-light); }
+
+  footer { background: var(--dark); border-top: 1px solid rgba(201,169,110,.15); padding: 60px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 14px; }
+  .footer-desc { font-size: .82rem; line-height: 1.8; color: var(--text); max-width: 280px; }
+  .footer-socials { display: flex; gap: 12px; margin-top: 24px; }
+  .social-btn { width: 36px; height: 36px; border: 1px solid rgba(201,169,110,.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: .9rem; text-decoration: none; transition: all .3s; }
+  .social-btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+  .footer-col-title { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: .82rem; color: var(--text); text-decoration: none; transition: color .3s; }
+  .footer-links a:hover { color: var(--cream2); }
+  .footer-bottom { background: var(--dark); padding: 18px 60px; border-top: 1px solid rgba(201,169,110,.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: .72rem; color: var(--text); }
+
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    nav { padding: 18px 30px; }
+    section { padding: 70px 30px; }
+    .about-grid, .location-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .rooms-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { padding: 16px 30px; }
+    .hero { padding: 0 30px 60px; }
+    .stats-bar { padding: 24px 30px; flex-wrap: wrap; gap: 20px; }
+    .gallery-header { padding: 0 30px; }
+    .gallery-strip { padding: 0 30px; }
+  }
+  @media (max-width: 700px) {
+    nav .nav-links, nav .nav-cta { display: none; }
+    .rooms-grid { grid-template-columns: 1fr; }
+    .room-card:first-child { grid-column: span 1; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .ratings-top { flex-direction: column; gap: 30px; }
+    footer { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-title { font-size: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">The Serene Grand</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Established 2009 · Luxury Collection</div>
+  <h1 class="hero-title">Where <em>Serenity</em><br>Meets Grandeur</h1>
+  <p class="hero-sub">Nestled in the lush hills of Coorg, Karnataka — a sanctuary of refined luxury, world-class cuisine, and timeless hospitality.</p>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Reserve Your Stay</button>
+    <a class="btn-ghost" href="#rooms">Explore Rooms</a>
+  </div>
+  <div class="scroll-hint">↓ Scroll to discover</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat fade-in"><div class="stat-num">48</div><div class="stat-label">Luxury Suites</div></div>
+  <div class="stat fade-in"><div class="stat-num">4.9</div><div class="stat-label">Guest Rating</div></div>
+  <div class="stat fade-in"><div class="stat-num">15+</div><div class="stat-label">Years of Excellence</div></div>
+  <div class="stat fade-in"><div class="stat-num">3</div><div class="stat-label">Dining Venues</div></div>
+  <div class="stat fade-in"><div class="stat-num">∞</div><div class="stat-label">Memories Created</div></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-eyebrow">About the Hotel</div>
+  <div class="about-grid">
+    <div class="about-img-wrap fade-in">
+      <img class="about-img-main" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=85" alt="Hotel exterior" loading="lazy">
+      <img class="about-img-accent" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80" alt="Spa" loading="lazy">
+      <div class="about-badge"><span class="about-badge-num">★5</span><span class="about-badge-text">Star Resort</span></div>
+    </div>
+    <div class="fade-in">
+      <div class="section-title">A Legacy of <em>Impeccable</em> Hospitality</div>
+      <div class="divider"></div>
+      <p class="section-desc">The Serene Grand is a five-star luxury resort perched at 3,500 ft amid the coffee-scented mist of Coorg. Our 8-acre estate blends colonial architecture with contemporary comforts, offering each guest an intimate escape from the everyday.</p>
+      <p class="section-desc" style="margin-top:16px">From our heated infinity pool overlooking the Western Ghats to our award-winning Ayurvedic spa, every detail is curated to exceed expectation.</p>
+      <div class="about-features">
+        <div class="about-feat"><div class="feat-icon">🏊</div><div><div class="feat-name">Infinity Pool</div><div class="feat-desc">Heated, valley-view</div></div></div>
+        <div class="about-feat"><div class="feat-icon">🧖</div><div><div class="feat-name">Ayurvedic Spa</div><div class="feat-desc">Certified therapists</div></div></div>
+        <div class="about-feat"><div class="feat-icon">🍽️</div><div><div class="feat-name">Fine Dining</div><div class="feat-desc">3 signature restaurants</div></div></div>
+        <div class="about-feat"><div class="feat-icon">🌿</div><div><div class="feat-name">Nature Trails</div><div class="feat-desc">Guided forest walks</div></div></div>
+        <div class="about-feat"><div class="feat-icon">🎯</div><div><div class="feat-name">Activities</div><div class="feat-desc">Trekking, birdwatching</div></div></div>
+        <div class="about-feat"><div class="feat-icon">📶</div><div><div class="feat-name">High-Speed WiFi</div><div class="feat-desc">All areas covered</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="rooms-header">
+    <div>
+      <div class="section-eyebrow">Accommodation</div>
+      <h2 class="section-title">Our <em>Rooms</em> & Suites</h2>
+    </div>
+    <a class="btn-ghost" href="#contact">Book a Room</a>
+  </div>
+  <div class="rooms-grid fade-in">
+    <div class="room-card">
+      <img class="room-img" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=85" alt="Presidential Suite" loading="lazy">
+      <div class="room-overlay">
+        <div class="room-type">Signature Suite</div>
+        <div class="room-name">Presidential Valley Suite</div>
+        <div class="room-price">From <strong>₹28,000</strong> / night</div>
+        <div class="room-tags"><span class="room-tag">180° View</span><span class="room-tag">Private Plunge Pool</span><span class="room-tag">Butler Service</span><span class="room-tag">120 sqm</span></div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img class="room-img" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80" alt="Deluxe Room" loading="lazy">
+      <div class="room-overlay">
+        <div class="room-type">Deluxe Room</div>
+        <div class="room-name">Garden View Deluxe</div>
+        <div class="room-price">From <strong>₹12,500</strong> / night</div>
+        <div class="room-tags"><span class="room-tag">Garden View</span><span class="room-tag">King Bed</span></div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img class="room-img" src="https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?w=800&q=80" alt="Forest Cottage" loading="lazy">
+      <div class="room-overlay">
+        <div class="room-type">Private Cottage</div>
+        <div class="room-name">Forest Hideaway Cottage</div>
+        <div class="room-price">From <strong>₹18,000</strong> / night</div>
+        <div class="room-tags"><span class="room-tag">Private Deck</span><span class="room-tag">Fireplace</span></div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img class="room-img" src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800&q=80" alt="Heritage Room" loading="lazy">
+      <div class="room-overlay">
+        <div class="room-type">Heritage Room</div>
+        <div class="room-name">Colonial Heritage Room</div>
+        <div class="room-price">From <strong>₹9,800</strong> / night</div>
+        <div class="room-tags"><span class="room-tag">Antique Décor</span><span class="room-tag">Twin/Double</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header fade-in">
+    <div class="section-eyebrow">Surroundings & Spaces</div>
+    <h2 class="section-title">Life at <em>Serene Grand</em></h2>
+  </div>
+  <div class="gallery-strip">
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=700&q=80" alt="Pool" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=700&q=80" alt="Spa" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80" alt="Dining" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1470010762743-1fa2363f65ca?w=700&q=80" alt="Nature" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=80" alt="Lobby" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700&q=80" alt="Wellness" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Mountains" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="section-eyebrow">Find Us</div>
+  <h2 class="section-title">Our <em>Location</em></h2>
+  <div class="location-grid fade-in">
+    <div>
+      <p class="location-desc">Nestled at Madikeri, Kodagu District — the heart of Coorg — The Serene Grand is easily accessible from Bangalore (265 km) and Mysore (118 km). We sit at an elevation of 3,500 ft offering panoramic views of the Western Ghats.</p>
+      <div class="map-box">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=75.6%2C12.35%2C75.85%2C12.55&layer=mapnik&marker=12.42%2C75.74" title="Hotel location map"></iframe>
+        <div class="map-label">
+          <span class="map-pin">📍</span>
+          <span class="map-addr">Estate Road, Madikeri, Kodagu, Karnataka 571201</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Nearby Attractions</p>
+      <ul class="nearby-list">
+        <li class="nearby-item"><div><div class="nearby-name">Madikeri Fort</div><div class="nearby-cat">Heritage Site</div></div><div class="nearby-dist">2.4 km</div></li>
+        <li class="nearby-item"><div><div class="nearby-name">Abbey Falls</div><div class="nearby-cat">Waterfall</div></div><div class="nearby-dist">8 km</div></li>
+        <li class="nearby-item"><div><div class="nearby-name">Dubare Elephant Camp</div><div class="nearby-cat">Wildlife</div></div><div class="nearby-dist">30 km</div></li>
+        <li class="nearby-item"><div><div class="nearby-name">Namdroling Monastery</div><div class="nearby-cat">Spiritual</div></div><div class="nearby-dist">35 km</div></li>
+        <li class="nearby-item"><div><div class="nearby-name">Iruppu Falls</div><div class="nearby-cat">Waterfall</div></div><div class="nearby-dist">58 km</div></li>
+        <li class="nearby-item"><div><div class="nearby-name">Bangalore Airport</div><div class="nearby-cat">Transportation</div></div><div class="nearby-dist">265 km</div></li>
+        <li class="nearby-item"><div><div class="nearby-name">Mysore Railway Station</div><div class="nearby-cat">Transportation</div></div><div class="nearby-dist">118 km</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- RATINGS -->
+<section class="ratings" id="reviews">
+  <div class="section-eyebrow">Guest Feedback</div>
+  <h2 class="section-title">What Our <em>Guests</em> Say</h2>
+  <div class="divider"></div>
+  <div class="ratings-top fade-in">
+    <div class="big-score">
+      <div class="big-score-num">4.9</div>
+      <div class="stars">★★★★★</div>
+      <div class="big-score-label">Overall Rating<br>from 1,240+ reviews</div>
+    </div>
+    <div class="rating-bars">
+      <div class="rbar-row"><span class="rbar-label">Cleanliness</span><div class="rbar-track"><div class="rbar-fill" style="width:98%"></div></div><span class="rbar-val">4.9</span></div>
+      <div class="rbar-row"><span class="rbar-label">Comfort</span><div class="rbar-track"><div class="rbar-fill" style="width:96%"></div></div><span class="rbar-val">4.8</span></div>
+      <div class="rbar-row"><span class="rbar-label">Service</span><div class="rbar-track"><div class="rbar-fill" style="width:100%"></div></div><span class="rbar-val">5.0</span></div>
+      <div class="rbar-row"><span class="rbar-label">Location</span><div class="rbar-track"><div class="rbar-fill" style="width:95%"></div></div><span class="rbar-val">4.8</span></div>
+      <div class="rbar-row"><span class="rbar-label">Value</span><div class="rbar-track"><div class="rbar-fill" style="width:93%"></div></div><span class="rbar-val">4.7</span></div>
+      <div class="rbar-row"><span class="rbar-label">Food & Dining</span><div class="rbar-track"><div class="rbar-fill" style="width:98%"></div></div><span class="rbar-val">4.9</span></div>
+    </div>
+  </div>
+  <div class="reviews-grid fade-in">
+    <div class="review-card"><p class="review-text">An absolutely magical stay. The valley suite's plunge pool at sunrise is something I will never forget. The staff remembered our anniversary and decorated the room without us even asking.</p><div class="review-footer"><div class="reviewer-avatar">RK</div><div><div class="reviewer-name">Rahul Khanna</div><div class="reviewer-date">February 2025 · Verified Stay</div></div><div class="review-stars">★★★★★</div></div></div>
+    <div class="review-card"><p class="review-text">The Ayurvedic spa treatments were therapeutic beyond belief. Set amidst coffee plantations, the air itself felt healing. The food — especially the Coorg pork curry — was extraordinary.</p><div class="review-footer"><div class="reviewer-avatar">PS</div><div><div class="reviewer-name">Priya Sharma</div><div class="reviewer-date">January 2025 · Verified Stay</div></div><div class="review-stars">★★★★★</div></div></div>
+    <div class="review-card"><p class="review-text">Stayed 5 nights for our honeymoon. From the guided nature walk at dawn to the private candlelit dinner on our cottage deck — every moment was crafted to perfection. Highly recommend!</p><div class="review-footer"><div class="reviewer-avatar">AM</div><div><div class="reviewer-name">Arjun Menon</div><div class="reviewer-date">December 2024 · Verified Stay</div></div><div class="review-stars">★★★★★</div></div></div>
+    <div class="review-card"><p class="review-text">The forest cottage is a dream! So peaceful and private. Woke up to mist rolling over the hills and birdsong. The fireplace in the evenings added to the charm. Will return every year.</p><div class="review-footer"><div class="reviewer-avatar">DV</div><div><div class="reviewer-name">Divya Verma</div><div class="reviewer-date">November 2024 · Verified Stay</div></div><div class="review-stars">★★★★★</div></div></div>
+    <div class="review-card"><p class="review-text">Top-notch service, elegant rooms, and the location is simply breathtaking. The breakfast spread with fresh local produce was a highlight. Butler service was discreet and incredibly attentive.</p><div class="review-footer"><div class="reviewer-avatar">SN</div><div><div class="reviewer-name">Sneha Nair</div><div class="reviewer-date">October 2024 · Verified Stay</div></div><div class="review-stars">★★★★★</div></div></div>
+    <div class="review-card"><p class="review-text">Stayed for a corporate retreat. Conference facilities were world-class, and the team-building activities in the coffee estates were brilliant. Our group unanimously voted it the best venue ever.</p><div class="review-footer"><div class="reviewer-avatar">VR</div><div><div class="reviewer-name">Vikram Reddy</div><div class="reviewer-date">September 2024 · Verified Stay</div></div><div class="review-stars">★★★★☆</div></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-eyebrow">Get in Touch</div>
+  <h2 class="section-title">Reserve Your <em>Stay</em></h2>
+  <div class="contact-grid fade-in">
+    <div class="contact-info-block">
+      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Address</div><div class="contact-item-val">Estate Road, Madikeri<br>Kodagu District, Karnataka 571201<br>India</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Phone</div><div class="contact-item-val">+91 82726 00100<br>+91 82726 00101 (Reservations)</div></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Email</div><div class="contact-item-val">reservations@serenagrand.in<br>concierge@serenagrand.in</div></div></div>
+      <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Reception Hours</div><div class="contact-item-val">Open 24 × 7 · Check-in: 2:00 PM<br>Check-out: 11:00 AM</div></div></div>
+      <div class="contact-item"><div class="contact-icon">🚗</div><div><div class="contact-item-label">Airport Transfer</div><div class="contact-item-val">Private cab available from Mangalore (120 km), Mysore (118 km) & Bangalore (265 km)</div></div></div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="Arjun"></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Sharma"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="arjun@example.com"></div>
+        <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" placeholder="+91 98000 00000"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Check-in Date</label><input class="form-input" type="date"></div>
+          <div class="form-group"><label class="form-label">Check-out Date</label><input class="form-input" type="date"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Room Type</label>
+            <select class="form-select">
+              <option value="">Select room type</option>
+              <option>Presidential Valley Suite</option>
+              <option>Forest Hideaway Cottage</option>
+              <option>Garden View Deluxe</option>
+              <option>Colonial Heritage Room</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Guests</label>
+            <select class="form-select">
+              <option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label">Special Requests</label><textarea class="form-textarea" placeholder="Anniversary decoration, dietary needs, early check-in, airport transfer…"></textarea></div>
+        <button class="submit-btn" onclick="this.textContent='Request Sent ✓';this.style.background='#8a7a5a'">Send Reservation Request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand-name">The Serene Grand</div>
+    <p class="footer-desc">A five-star sanctuary in the misty highlands of Coorg, Karnataka. Crafting memories since 2009.</p>
+    <div class="footer-socials">
+      <a class="social-btn" href="#" title="Instagram">IG</a>
+      <a class="social-btn" href="#" title="Facebook">FB</a>
+      <a class="social-btn" href="#" title="Twitter">X</a>
+      <a class="social-btn" href="#" title="YouTube">YT</a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">Explore</div>
+    <ul class="footer-links">
+      <li><a href="#about">About Us</a></li><li><a href="#rooms">Rooms & Suites</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#location">Location</a></li><li><a href="#">Dining</a></li><li><a href="#">Spa & Wellness</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Services</div>
+    <ul class="footer-links">
+      <li><a href="#">Wedding Packages</a></li><li><a href="#">Corporate Retreats</a></li><li><a href="#">Private Dining</a></li><li><a href="#">Airport Transfers</a></li><li><a href="#">Nature Activities</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <ul class="footer-links">
+      <li><a href="tel:+918272600100">+91 82726 00100</a></li><li><a href="mailto:reservations@serenagrand.in">reservations@serenagrand.in</a></li><li><a href="#">Madikeri, Kodagu, Karnataka</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span class="footer-copy">© 2025 The Serene Grand. All rights reserved.</span>
+  <span class="footer-copy">Designed for discerning travellers.</span>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
